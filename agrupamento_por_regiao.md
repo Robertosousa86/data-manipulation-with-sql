@@ -475,3 +475,193 @@ GROUP BY
 |    GO    | Região Sudeste | Tratores  |   0   | 2004 |
 |    MS    | Região Sudeste | Tratores  |   0   | 2004 |
 |    MT    | Região Sudeste | Tratores  |   0   | 2004 |
+
+### Agrupando veículos por categorias na **Região Nordeste**
+
+- View da [regiao_sudeste](views_sql/view_regiao_nordeste.sql)
+
+#### Categoria "Veículos de Passeio"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Nordeste' AS Fonte,
+	'Veículos de Passeio' AS Categoria,
+	SUM(automovel + caminhonete + camioneta + sidecar + utilitario) AS 'Total',
+	ano
+FROM
+	regiao_nordeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |      Fonte      |      Categoria      |   Total   | ano  |
+| :------: | :-------------: | :-----------------: | :-------: | :--: |
+|    AL    | Região Nordeste | Veículos de Passeio | 1,804,091 | 2004 |
+|    BA    | Região Nordeste | Veículos de Passeio | 9,270,825 | 2004 |
+|    CE    | Região Nordeste | Veículos de Passeio | 6,089,967 | 2004 |
+|    MA    | Região Nordeste | Veículos de Passeio | 1,858,735 | 2004 |
+|    PB    | Região Nordeste | Veículos de Passeio | 2,652,873 | 2004 |
+|    PE    | Região Nordeste | Veículos de Passeio | 7,765,030 | 2004 |
+|    PI    | Região Nordeste | Veículos de Passeio | 1,568,768 | 2004 |
+|    RN    | Região Nordeste | Veículos de Passeio | 2,672,673 | 2004 |
+|    SE    | Região Nordeste | Veículos de Passeio | 1,701,021 | 2004 |
+
+#### Categoria "Motocicletas"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Nordeste' AS Fonte,
+	'Motocicletas' AS Categoria,
+	SUM(ciclomotor + motocicleta + motoneta + triciclo) AS 'Total',
+	ano
+FROM
+	regiao_nordeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |      Fonte      |      Categoria      |  Total  | ano  |
+| :------: | :-------------: | :-----------------: | :-----: | :--: |
+|    AL    | Região Nordeste | Veículos de Passeio | 138,712 | 2004 |
+|    BA    | Região Nordeste | Veículos de Passeio | 628,615 | 2004 |
+|    CE    | Região Nordeste | Veículos de Passeio | 446,919 | 2004 |
+|    MA    | Região Nordeste | Veículos de Passeio | 294,897 | 2004 |
+|    PB    | Região Nordeste | Veículos de Passeio | 161,240 | 2004 |
+|    PE    | Região Nordeste | Veículos de Passeio | 372,810 | 2004 |
+|    PI    | Região Nordeste | Veículos de Passeio | 212,938 | 2004 |
+|    RN    | Região Nordeste | Veículos de Passeio | 225,025 | 2004 |
+|    SE    | Região Nordeste | Veículos de Passeio | 135,173 | 2004 |
+
+#### Categoria "Caminhões"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Sudeste' AS Fonte,
+	'Caminhões' AS Categoria,
+	SUM(caminhao + caminhaotrator + reboque + semireboque + chassiplataforma) AS 'Total',
+	ano
+FROM
+	regiao_nordeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |     Fonte      | Categoria |  Total  | ano  |
+| :------: | :------------: | :-------: | :-----: | :--: |
+|    AL    | Região Sudeste | Caminhões | 171,133 | 2004 |
+|    BA    | Região Sudeste | Caminhões | 847,904 | 2004 |
+|    CE    | Região Sudeste | Caminhões | 502,044 | 2004 |
+|    MA    | Região Sudeste | Caminhões | 199,564 | 2004 |
+|    PB    | Região Sudeste | Caminhões | 222,122 | 2004 |
+|    PE    | Região Sudeste | Caminhões | 699,954 | 2004 |
+|    PI    | Região Sudeste | Caminhões | 164,897 | 2004 |
+|    RN    | Região Sudeste | Caminhões | 211,840 | 2004 |
+|    SE    | Região Sudeste | Caminhões | 164,653 | 2004 |
+
+#### Categoria "Transporte Coletivo"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Nordeste' AS Fonte,
+	'Transporte Coletivo' AS Categoria,
+	SUM(onibus + microonibus + bonde) AS 'Total',
+	ano
+FROM
+	regiao_nordeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |      Fonte      |      Categoria      |   Total   | ano  |
+| :------: | :-------------: | :-----------------: | :-------: | :--: |
+|    AL    | Região Nordeste | Transporte Coletivo |  577,738  | 2004 |
+|    BA    | Região Nordeste | Transporte Coletivo | 2,644,467 | 2004 |
+|    CE    | Região Nordeste | Transporte Coletivo | 3,222,510 | 2004 |
+|    MA    | Região Nordeste | Transporte Coletivo | 1,247,673 | 2004 |
+|    PB    | Região Nordeste | Transporte Coletivo | 1,008,691 | 2004 |
+|    PE    | Região Nordeste | Transporte Coletivo | 2,510,598 | 2004 |
+|    PI    | Região Nordeste | Transporte Coletivo | 1,074,043 | 2004 |
+|    RN    | Região Nordeste | Transporte Coletivo | 1,126,527 | 2004 |
+|    SE    | Região Nordeste | Transporte Coletivo |  620,332  | 2004 |
+
+#### Categoria "Tratores"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Sudeste' AS Fonte,
+	'Tratores' AS Categoria,
+	SUM(tratoresteira + tratorrodas) AS 'Total',
+	ano
+FROM
+	regiao_nordeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |     Fonte      | Categoria | Total | ano  |
+| :------: | :------------: | :-------: | :---: | :--: |
+|    AL    | Região Sudeste | Tratores  |  92   | 2004 |
+|    BA    | Região Sudeste | Tratores  | 1,596 | 2004 |
+|    CE    | Região Sudeste | Tratores  |  577  | 2004 |
+|    MA    | Região Sudeste | Tratores  |  247  | 2004 |
+|    PB    | Região Sudeste | Tratores  |  370  | 2004 |
+|    PE    | Região Sudeste | Tratores  | 1,074 | 2004 |
+|    PI    | Região Sudeste | Tratores  |  189  | 2004 |
+|    RN    | Região Sudeste | Tratores  | 1,137 | 2004 |
+|    SE    | Região Sudeste | Tratores  |  805  | 2004 |
+
+#### Categoria "Outros"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Nordeste' AS Fonte,
+	'Outros' AS Categoria,
+	SUM(outros) AS 'Total',
+	ano
+FROM
+	regiao_nordeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |      Fonte      | Categoria | Total | ano  |
+| :------: | :-------------: | :-------: | :---: | :--: |
+|    AL    | Região Nordeste | Tratores  |   0   | 2004 |
+|    BA    | Região Nordeste | Tratores  |   0   | 2004 |
+|    CE    | Região Nordeste | Tratores  |   0   | 2004 |
+|    MA    | Região Nordeste | Tratores  |   0   | 2004 |
+|    PB    | Região Nordeste | Tratores  |   0   | 2004 |
+|    PE    | Região Nordeste | Tratores  |   0   | 2004 |
+|    PI    | Região Nordeste | Tratores  |   0   | 2004 |
+|    RN    | Região Nordeste | Tratores  |   0   | 2004 |
+|    SE    | Região Nordeste | Tratores  |   0   | 2004 |
