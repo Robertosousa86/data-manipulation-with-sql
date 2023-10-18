@@ -156,7 +156,7 @@ GROUP BY
 |    RS    | Região Sul |  Outros   |   0   | 2004 |
 |    SC    | Região Sul |  Outros   |   0   | 2004 |
 
-### Agrupando veículos por categorias na **Região Sul**
+### Agrupando veículos por categorias na **Região Sudeste**
 
 - View da [regiao_sudeste](views_sql/view_regiao_sudeste.sql)
 
@@ -315,3 +315,163 @@ GROUP BY
 |    MG    | Região Sudeste | Tratores  |   0   | 2004 |
 |    RJ    | Região Sudeste | Tratores  |   0   | 2004 |
 |    SP    | Região Sudeste | Tratores  |   0   | 2004 |
+
+### Agrupando veículos por categorias na **Região Centro Oeste**
+
+- View da [regiao_sudeste](views_sql/view_regiao_centro_oeste.sql)
+
+#### Categoria "Veículos de Passeio"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Centro Oeste' AS Fonte,
+	'Veículos de Passeio' AS Categoria,
+	SUM(automovel + caminhonete + camioneta + sidecar + utilitario) AS 'Total',
+	ano
+FROM
+	regiao_centro_oeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado:
+
+| sigla_uf |        Fonte        |      Categoria      |   Total   | ano  |
+| :------: | :-----------------: | :-----------------: | :-------: | :--: |
+|    DF    | Região Centro Oeste | Veículos de Passeio | 7,948,787 | 2004 |
+|    GO    | Região Centro Oeste | Veículos de Passeio | 9,950,267 | 2004 |
+|    MS    | Região Centro Oeste | Veículos de Passeio | 4,249,443 | 2004 |
+|    MT    | Região Centro Oeste | Veículos de Passeio | 3,609,459 | 2004 |
+
+#### Categoria "Motocicletas"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Centro Oeste' AS Fonte,
+	'Motocicletas' AS Categoria,
+	SUM(ciclomotor + motocicleta + motoneta + triciclo) AS 'Total',
+	ano
+FROM
+	regiao_centro_oeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |        Fonte        |  Categoria   |  Total  | ano  |
+| :------: | :-----------------: | :----------: | :-----: | :--: |
+|    DF    | Região Centro Oeste | Motocicletas | 190,087 | 2004 |
+|    GO    | Região Centro Oeste | Motocicletas | 872,897 | 2004 |
+|    MS    | Região Centro Oeste | Motocicletas | 341,155 | 2004 |
+|    MT    | Região Centro Oeste | Motocicletas | 623,779 | 2004 |
+
+#### Categoria "Caminhões"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Sudeste' AS Fonte,
+	'Caminhões' AS Categoria,
+	SUM(caminhao + caminhaotrator + reboque + semireboque + chassiplataforma) AS 'Total',
+	ano
+FROM
+	regiao_centro_oeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |     Fonte      | Categoria |   Total   | ano  |
+| :------: | :------------: | :-------: | :-------: | :--: |
+|    DF    | Região Sudeste | Caminhões |  220,334  | 2004 |
+|    GO    | Região Sudeste | Caminhões | 1,089,393 | 2004 |
+|    MS    | Região Sudeste | Caminhões |  543,592  | 2004 |
+|    MT    | Região Sudeste | Caminhões |  748,276  | 2004 |
+
+#### Categoria "Transporte Coletivo"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Sudeste' AS Fonte,
+	'Transporte Coletivo' AS Categoria,
+	SUM(onibus + microonibus + bonde) AS 'Total',
+	ano
+FROM
+	regiao_centro_oeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |     Fonte      |      Categoria      |   Total   | ano  |
+| :------: | :------------: | :-----------------: | :-------: | :--: |
+|    DF    | Região Sudeste | Transporte Coletivo |  608,484  | 2004 |
+|    GO    | Região Sudeste | Transporte Coletivo | 3,118,397 | 2004 |
+|    MS    | Região Sudeste | Transporte Coletivo | 1,284,942 | 2004 |
+|    MT    | Região Sudeste | Transporte Coletivo | 1,793,014 | 2004 |
+
+#### Categoria "Tratores"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Sudeste' AS Fonte,
+	'Tratores' AS Categoria,
+	SUM(tratoresteira + tratorrodas) AS 'Total',
+	ano
+FROM
+	regiao_centro_oeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |     Fonte      | Categoria | Total | ano  |
+| :------: | :------------: | :-------: | :---: | :--: |
+|    DF    | Região Sudeste | Tratores  | 4,906 | 2004 |
+|    GO    | Região Sudeste | Tratores  | 1,172 | 2004 |
+|    MS    | Região Sudeste | Tratores  | 1,241 | 2004 |
+|    MT    | Região Sudeste | Tratores  |  888  | 2004 |
+
+#### Categoria "Outros"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Centro Oeste' AS Fonte,
+	'Tratores' AS Categoria,
+	SUM(outros) AS 'Total',
+	ano
+FROM
+	regiao_centro_oeste
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |     Fonte      | Categoria | Total | ano  |
+| :------: | :------------: | :-------: | :---: | :--: |
+|    DF    | Região Sudeste | Tratores  |   0   | 2004 |
+|    GO    | Região Sudeste | Tratores  |   0   | 2004 |
+|    MS    | Região Sudeste | Tratores  |   0   | 2004 |
+|    MT    | Região Sudeste | Tratores  |   0   | 2004 |
