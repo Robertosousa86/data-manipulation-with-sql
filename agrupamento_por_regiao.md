@@ -391,19 +391,19 @@ GROUP BY
 
 #### Resultado
 
-| sigla_uf |     Fonte      | Categoria |   Total   | ano  |
-| :------: | :------------: | :-------: | :-------: | :--: |
-|    DF    | Região Sudeste | Caminhões |  220,334  | 2004 |
-|    GO    | Região Sudeste | Caminhões | 1,089,393 | 2004 |
-|    MS    | Região Sudeste | Caminhões |  543,592  | 2004 |
-|    MT    | Região Sudeste | Caminhões |  748,276  | 2004 |
+| sigla_uf |        Fonte        | Categoria |   Total   | ano  |
+| :------: | :-----------------: | :-------: | :-------: | :--: |
+|    DF    | região Centro Oeste | Caminhões |  220,334  | 2004 |
+|    GO    | região Centro Oeste | Caminhões | 1,089,393 | 2004 |
+|    MS    | região Centro Oeste | Caminhões |  543,592  | 2004 |
+|    MT    | região Centro Oeste | Caminhões |  748,276  | 2004 |
 
 #### Categoria "Transporte Coletivo"
 
 ```sql
 SELECT
 	sigla_uf,
-	'Região Sudeste' AS Fonte,
+	'região Centro Oeste' AS Fonte,
 	'Transporte Coletivo' AS Categoria,
 	SUM(onibus + microonibus + bonde) AS 'Total',
 	ano
@@ -417,19 +417,19 @@ GROUP BY
 
 #### Resultado
 
-| sigla_uf |     Fonte      |      Categoria      |   Total   | ano  |
-| :------: | :------------: | :-----------------: | :-------: | :--: |
-|    DF    | Região Sudeste | Transporte Coletivo |  608,484  | 2004 |
-|    GO    | Região Sudeste | Transporte Coletivo | 3,118,397 | 2004 |
-|    MS    | Região Sudeste | Transporte Coletivo | 1,284,942 | 2004 |
-|    MT    | Região Sudeste | Transporte Coletivo | 1,793,014 | 2004 |
+| sigla_uf |        Fonte        |      Categoria      |   Total   | ano  |
+| :------: | :-----------------: | :-----------------: | :-------: | :--: |
+|    DF    | região Centro Oeste | Transporte Coletivo |  608,484  | 2004 |
+|    GO    | região Centro Oeste | Transporte Coletivo | 3,118,397 | 2004 |
+|    MS    | região Centro Oeste | Transporte Coletivo | 1,284,942 | 2004 |
+|    MT    | região Centro Oeste | Transporte Coletivo | 1,793,014 | 2004 |
 
 #### Categoria "Tratores"
 
 ```sql
 SELECT
 	sigla_uf,
-	'Região Sudeste' AS Fonte,
+	'Região Centro Oeste' AS Fonte,
 	'Tratores' AS Categoria,
 	SUM(tratoresteira + tratorrodas) AS 'Total',
 	ano
@@ -443,12 +443,12 @@ GROUP BY
 
 #### Resultado
 
-| sigla_uf |     Fonte      | Categoria | Total | ano  |
-| :------: | :------------: | :-------: | :---: | :--: |
-|    DF    | Região Sudeste | Tratores  | 4,906 | 2004 |
-|    GO    | Região Sudeste | Tratores  | 1,172 | 2004 |
-|    MS    | Região Sudeste | Tratores  | 1,241 | 2004 |
-|    MT    | Região Sudeste | Tratores  |  888  | 2004 |
+| sigla_uf |        Fonte        | Categoria | Total | ano  |
+| :------: | :-----------------: | :-------: | :---: | :--: |
+|    DF    | Região Centro Oeste | Tratores  | 4,906 | 2004 |
+|    GO    | Região Centro Oeste | Tratores  | 1,172 | 2004 |
+|    MS    | Região Centro Oeste | Tratores  | 1,241 | 2004 |
+|    MT    | Região Centro Oeste | Tratores  |  888  | 2004 |
 
 #### Categoria "Outros"
 
@@ -469,16 +469,16 @@ GROUP BY
 
 #### Resultado
 
-| sigla_uf |     Fonte      | Categoria | Total | ano  |
-| :------: | :------------: | :-------: | :---: | :--: |
-|    DF    | Região Sudeste | Tratores  |   0   | 2004 |
-|    GO    | Região Sudeste | Tratores  |   0   | 2004 |
-|    MS    | Região Sudeste | Tratores  |   0   | 2004 |
-|    MT    | Região Sudeste | Tratores  |   0   | 2004 |
+| sigla_uf |        Fonte        | Categoria | Total | ano  |
+| :------: | :-----------------: | :-------: | :---: | :--: |
+|    DF    | Região Centro Oeste | Tratores  |   0   | 2004 |
+|    GO    | Região Centro Oeste | Tratores  |   0   | 2004 |
+|    MS    | Região Centro Oeste | Tratores  |   0   | 2004 |
+|    MT    | Região Centro Oeste | Tratores  |   0   | 2004 |
 
 ### Agrupando veículos por categorias na **Região Nordeste**
 
-- View da [regiao_sudeste](views_sql/view_regiao_nordeste.sql)
+- View da [regiao_nordeste](views_sql/view_regiao_nordeste.sql)
 
 #### Categoria "Veículos de Passeio"
 
@@ -547,7 +547,7 @@ GROUP BY
 ```sql
 SELECT
 	sigla_uf,
-	'Região Sudeste' AS Fonte,
+	'Região Nordeste' AS Fonte,
 	'Caminhões' AS Categoria,
 	SUM(caminhao + caminhaotrator + reboque + semireboque + chassiplataforma) AS 'Total',
 	ano
@@ -561,17 +561,17 @@ GROUP BY
 
 #### Resultado
 
-| sigla_uf |     Fonte      | Categoria |  Total  | ano  |
-| :------: | :------------: | :-------: | :-----: | :--: |
-|    AL    | Região Sudeste | Caminhões | 171,133 | 2004 |
-|    BA    | Região Sudeste | Caminhões | 847,904 | 2004 |
-|    CE    | Região Sudeste | Caminhões | 502,044 | 2004 |
-|    MA    | Região Sudeste | Caminhões | 199,564 | 2004 |
-|    PB    | Região Sudeste | Caminhões | 222,122 | 2004 |
-|    PE    | Região Sudeste | Caminhões | 699,954 | 2004 |
-|    PI    | Região Sudeste | Caminhões | 164,897 | 2004 |
-|    RN    | Região Sudeste | Caminhões | 211,840 | 2004 |
-|    SE    | Região Sudeste | Caminhões | 164,653 | 2004 |
+| sigla_uf |      Fonte      | Categoria |  Total  | ano  |
+| :------: | :-------------: | :-------: | :-----: | :--: |
+|    AL    | Região Nordeste | Caminhões | 171,133 | 2004 |
+|    BA    | Região Nordeste | Caminhões | 847,904 | 2004 |
+|    CE    | Região Nordeste | Caminhões | 502,044 | 2004 |
+|    MA    | Região Nordeste | Caminhões | 199,564 | 2004 |
+|    PB    | Região Nordeste | Caminhões | 222,122 | 2004 |
+|    PE    | Região Nordeste | Caminhões | 699,954 | 2004 |
+|    PI    | Região Nordeste | Caminhões | 164,897 | 2004 |
+|    RN    | Região Nordeste | Caminhões | 211,840 | 2004 |
+|    SE    | Região Nordeste | Caminhões | 164,653 | 2004 |
 
 #### Categoria "Transporte Coletivo"
 
@@ -609,7 +609,7 @@ GROUP BY
 ```sql
 SELECT
 	sigla_uf,
-	'Região Sudeste' AS Fonte,
+	'Região Nordeste' AS Fonte,
 	'Tratores' AS Categoria,
 	SUM(tratoresteira + tratorrodas) AS 'Total',
 	ano
@@ -623,17 +623,17 @@ GROUP BY
 
 #### Resultado
 
-| sigla_uf |     Fonte      | Categoria | Total | ano  |
-| :------: | :------------: | :-------: | :---: | :--: |
-|    AL    | Região Sudeste | Tratores  |  92   | 2004 |
-|    BA    | Região Sudeste | Tratores  | 1,596 | 2004 |
-|    CE    | Região Sudeste | Tratores  |  577  | 2004 |
-|    MA    | Região Sudeste | Tratores  |  247  | 2004 |
-|    PB    | Região Sudeste | Tratores  |  370  | 2004 |
-|    PE    | Região Sudeste | Tratores  | 1,074 | 2004 |
-|    PI    | Região Sudeste | Tratores  |  189  | 2004 |
-|    RN    | Região Sudeste | Tratores  | 1,137 | 2004 |
-|    SE    | Região Sudeste | Tratores  |  805  | 2004 |
+| sigla_uf |      Fonte      | Categoria | Total | ano  |
+| :------: | :-------------: | :-------: | :---: | :--: |
+|    AL    | Região Nordeste | Tratores  |  92   | 2004 |
+|    BA    | Região Nordeste | Tratores  | 1,596 | 2004 |
+|    CE    | Região Nordeste | Tratores  |  577  | 2004 |
+|    MA    | Região Nordeste | Tratores  |  247  | 2004 |
+|    PB    | Região Nordeste | Tratores  |  370  | 2004 |
+|    PE    | Região Nordeste | Tratores  | 1,074 | 2004 |
+|    PI    | Região Nordeste | Tratores  |  189  | 2004 |
+|    RN    | Região Nordeste | Tratores  | 1,137 | 2004 |
+|    SE    | Região Nordeste | Tratores  |  805  | 2004 |
 
 #### Categoria "Outros"
 
@@ -656,12 +656,192 @@ GROUP BY
 
 | sigla_uf |      Fonte      | Categoria | Total | ano  |
 | :------: | :-------------: | :-------: | :---: | :--: |
-|    AL    | Região Nordeste | Tratores  |   0   | 2004 |
-|    BA    | Região Nordeste | Tratores  |   0   | 2004 |
-|    CE    | Região Nordeste | Tratores  |   0   | 2004 |
-|    MA    | Região Nordeste | Tratores  |   0   | 2004 |
-|    PB    | Região Nordeste | Tratores  |   0   | 2004 |
-|    PE    | Região Nordeste | Tratores  |   0   | 2004 |
-|    PI    | Região Nordeste | Tratores  |   0   | 2004 |
-|    RN    | Região Nordeste | Tratores  |   0   | 2004 |
-|    SE    | Região Nordeste | Tratores  |   0   | 2004 |
+|    AL    | Região Nordeste |  Outros   |   0   | 2004 |
+|    BA    | Região Nordeste |  Outros   |   0   | 2004 |
+|    CE    | Região Nordeste |  Outros   |   0   | 2004 |
+|    MA    | Região Nordeste |  Outros   |   0   | 2004 |
+|    PB    | Região Nordeste |  Outros   |   0   | 2004 |
+|    PE    | Região Nordeste |  Outros   |   0   | 2004 |
+|    PI    | Região Nordeste |  Outros   |   0   | 2004 |
+|    RN    | Região Nordeste |  Outros   |   0   | 2004 |
+|    SE    | Região Nordeste |  Outros   |   0   | 2004 |
+
+### Agrupando veículos por categorias na **Região Norte**
+
+- View da [regiao_norte](views_sql/view_regiao_norte.sql)
+
+#### Categoria "Veículos de Passeio"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Norte' AS Fonte,
+	'Veículos de Passeio' AS Categoria,
+	SUM(automovel + caminhonete + camioneta + sidecar + utilitario) AS 'Total',
+	ano
+FROM
+	regiao_norte
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |    Fonte     |      Categoria      |   Total   | ano  |
+| :------: | :----------: | :-----------------: | :-------: | :--: |
+|    AC    | Região Norte | Veículos de Passeio |  407,761  | 2004 |
+|    AM    | Região Norte | Veículos de Passeio | 2,168,343 | 2004 |
+|    AP    | Região Norte | Veículos de Passeio |  367,444  | 2004 |
+|    PA    | Região Norte | Veículos de Passeio | 2,888,693 | 2004 |
+|    RO    | Região Norte | Veículos de Passeio | 1,197,419 | 2004 |
+|    RR    | Região Norte | Veículos de Passeio |  340,252  | 2004 |
+|    TO    | Região Norte | Veículos de Passeio |  897,870  | 2004 |
+
+#### Categoria "Motocicletas"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Norte' AS Fonte,
+	'Motocicletas' AS Categoria,
+	SUM(ciclomotor + motocicleta + motoneta + triciclo) AS 'Total',
+	ano
+FROM
+	regiao_norte
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |    Fonte     |  Categoria   |  Total  | ano  |
+| :------: | :----------: | :----------: | :-----: | :--: |
+|    AC    | Região Norte | Motocicletas | 67,192  | 2004 |
+|    AM    | Região Norte | Motocicletas | 193,590 | 2004 |
+|    AP    | Região Norte | Motocicletas | 31,512  | 2004 |
+|    PA    | Região Norte | Motocicletas | 402,204 | 2004 |
+|    RO    | Região Norte | Motocicletas | 353,906 | 2004 |
+|    RR    | Região Norte | Motocicletas | 63,753  | 2004 |
+|    TO    | Região Norte | Motocicletas | 274,673 | 2004 |
+
+#### Categoria "Caminhões"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Norte' AS Fonte,
+	'Caminhões' AS Categoria,
+	SUM(caminhao + caminhaotrator + reboque + semireboque + chassiplataforma) AS 'Total',
+	ano
+FROM
+	regiao_norte
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |    Fonte     | Categoria |  Total  | ano  |
+| :------: | :----------: | :-------: | :-----: | :--: |
+|    AC    | Região Norte | Caminhões | 43,440  | 2004 |
+|    AM    | Região Norte | Caminhões | 205,198 | 2004 |
+|    AP    | Região Norte | Caminhões | 30,297  | 2004 |
+|    PA    | Região Norte | Caminhões | 367,218 | 2004 |
+|    RO    | Região Norte | Caminhões | 242,705 | 2004 |
+|    RR    | Região Norte | Caminhões | 35,512  | 2004 |
+|    TO    | Região Norte | Caminhões | 177,825 | 2004 |
+
+#### Categoria "Transporte Coletivo"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Norte' AS Fonte,
+	'Transporte Coletivo' AS Categoria,
+	SUM(onibus + microonibus + bonde) AS 'Total',
+	ano
+FROM
+	regiao_norte
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |    Fonte     |      Categoria      |   Total   | ano  |
+| :------: | :----------: | :-----------------: | :-------: | :--: |
+|    AC    | Região Norte | Transporte Coletivo |  221,546  | 2004 |
+|    AM    | Região Norte | Transporte Coletivo |  528,173  | 2004 |
+|    AP    | Região Norte | Transporte Coletivo |  122,638  | 2004 |
+|    PA    | Região Norte | Transporte Coletivo | 1,316,343 | 2004 |
+|    RO    | Região Norte | Transporte Coletivo | 1,185,546 | 2004 |
+|    RR    | Região Norte | Transporte Coletivo |  240,097  | 2004 |
+|    TO    | Região Norte | Transporte Coletivo |  596,328  | 2004 |
+
+#### Categoria "Tratores"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Norte' AS Fonte,
+	'Tratores' AS Categoria,
+	SUM(tratoresteira + tratorrodas) AS 'Total',
+	ano
+FROM
+	regiao_norte
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |    Fonte     | Categoria | Total | ano  |
+| :------: | :----------: | :-------: | :---: | :--: |
+|    AC    | Região Norte | Tratores  |  18   | 2004 |
+|    AM    | Região Norte | Tratores  |  847  | 2004 |
+|    AP    | Região Norte | Tratores  |  35   | 2004 |
+|    PA    | Região Norte | Tratores  |  386  | 2004 |
+|    RO    | Região Norte | Tratores  |  190  | 2004 |
+|    RR    | Região Norte | Tratores  |  60   | 2004 |
+|    TO    | Região Norte | Tratores  |  153  | 2004 |
+
+#### Categoria "Outros"
+
+```sql
+SELECT
+	sigla_uf,
+	'Região Norte' AS Fonte,
+	'Outros' AS Categoria,
+	SUM(outros) AS 'Total',
+	ano
+FROM
+	regiao_norte
+WHERE
+	ano = 2004
+GROUP BY
+	sigla_uf;
+```
+
+#### Resultado
+
+| sigla_uf |    Fonte     | Categoria | Total | ano  |
+| :------: | :----------: | :-------: | :---: | :--: |
+|    AL    | Região Norte |  Outros   |   0   | 2004 |
+|    BA    | Região Norte |  Outros   |   0   | 2004 |
+|    CE    | Região Norte |  Outros   |   0   | 2004 |
+|    MA    | Região Norte |  Outros   |   0   | 2004 |
+|    PB    | Região Norte |  Outros   |   0   | 2004 |
+|    PE    | Região Norte |  Outros   |   0   | 2004 |
+|    PI    | Região Norte |  Outros   |   0   | 2004 |
+|    RN    | Região Norte |  Outros   |   0   | 2004 |
+|    SE    | Região Norte |  Outros   |   0   | 2004 |
