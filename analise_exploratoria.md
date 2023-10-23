@@ -2,7 +2,45 @@
 
 ## Extração de dados
 
-### Consulta de todos os veículos registrados no ano de **2004** na tabela **denatran_frota_municipio_tipo**:
+### Total de meses onde houve registro de veículos no ano de **2004** na tabela **denatran_frota_municipio_tipo**:
+
+```sql
+SELECT
+	'denatran_frota_municipio_tipo' AS Fonte,
+	COUNT(DISTINCT mes) AS total_meses,
+	ano
+FROM
+	denatran_frota_municipio_tipo
+WHERE
+	ano = 2004;
+```
+
+#### Resultado:
+
+|             Fonte             | total_meses | ano  |
+| :---------------------------: | :---------: | :--: |
+| denatran_frota_municipio_tipo |     12      | 2004 |
+
+### Total de meses onde houve registro de veículos no ano de **2020** na tabela **denatran_frota_municipio_tipo**:
+
+```sql
+SELECT
+	'denatran_frota_municipio_tipo' AS Fonte,
+	COUNT(DISTINCT mes) AS total_meses,
+	ano
+FROM
+	denatran_frota_municipio_tipo
+WHERE
+	ano = 2020;
+```
+
+#### Resultado:
+
+|             Fonte             | total_meses | ano  |
+| :---------------------------: | :---------: | :--: |
+| denatran_frota_municipio_tipo |     12      | 2020 |
+
+### Total de veículos registrados no ano de **2004** na tabela **denatran_frota_municipio_tipo**:
 
 ```sql
 SELECT
@@ -23,26 +61,80 @@ WHERE
 | :---------------------------: | :----------: | ---- | :---------: |
 | denatran_frota_municipio_tipo |    Total     | 2004 | 455,815,123 |
 
-### Consulta do total de meses onde houve registro de veículos no ano de **2004** na tabela **denatran_frota_municipio_tipo**:
+### Total de veículos registrados no ano de **2020** na tabela **denatran_frota_municipio_tipo**:
 
 ```sql
 SELECT
 	'denatran_frota_municipio_tipo' AS Fonte,
-	COUNT(DISTINCT mes) AS total_meses,
-	ano
+	'Total' AS tipo_veiculo,
+	ano,
+	SUM(total) AS Valor
 FROM
 	denatran_frota_municipio_tipo
 WHERE
-	ano = 2004;
+	ano = 2020;
+
 ```
 
 #### Resultado:
 
-|             Fonte             | total_meses | ano  |
-| :---------------------------: | :---------: | :--: |
-| denatran_frota_municipio_tipo |     12      | 2004 |
+|             Fonte             | tipo_veiculo | ano  |     Valor     |
+| :---------------------------: | :----------: | ---- | :-----------: |
+| denatran_frota_municipio_tipo |    Total     | 2004 | 1,276,185,273 |
 
-### Consulta da média de resgistros mensais do ano de **2004** na tabela **denatran_frota_municipio_tipo**:
+### Valor do aumento de veículos entre **2004 e 2020** na tabela **denatran_frota_municipio_tipo**:
+
+```sql
+SELECT
+	'denatran_frota_municipio_tipo' AS Fonte,
+	'Total' AS tipo_veiculo,
+	'2004 - 2020' AS Ano_Ref_Analise,
+	SUM(total) - (
+	SELECT
+		SUM(total)
+	FROM
+		denatran_frota_municipio_tipo
+	WHERE
+		ano = 2004) AS Aumento
+FROM
+	denatran_frota_municipio_tipo
+WHERE
+	ano = 2020;
+```
+
+#### Resultado
+
+|             Fonte             | tipo_veiculo | Ano_Ref_Analise |   Aumento   |
+| :---------------------------: | :----------: | :-------------: | :---------: |
+| denatran_frota_municipio_tipo |    Total     |   2004 - 2020   | 820,370,150 |
+
+### Percentual de aumento de veículos entre **2004 e 2020** na tabela **denatran_frota_municipio_tipo**:
+
+```sql
+SELECT
+	'denatran_frota_municipio_tipo' AS Fonte,
+	'Total' AS tipo_veiculo,
+	'2004 - 2020' AS Ano_Ref_Analise,
+	ROUND(((SUM(total) - (
+        SELECT SUM(total)
+        FROM denatran_frota_municipio_tipo
+        WHERE ano = 2004)) * 100.0) /
+        (SELECT SUM(total)
+        FROM denatran_frota_municipio_tipo
+        WHERE ano = 2004), 2) AS Percentual_Aumento
+FROM
+	denatran_frota_municipio_tipo
+WHERE
+	ano = 2020;
+```
+
+#### Resultado:
+
+|             Fonte             | tipo_veiculo | Ano_Ref_Analise | Percentual_Aumento |
+| :---------------------------: | :----------: | :-------------: | :----------------: |
+| denatran_frota_municipio_tipo |    Total     |   2004 - 2020   |       179.98       |
+
+### Média de registros mensais do ano de **2004** na tabela **denatran_frota_municipio_tipo**:
 
 ```sql
 SELECT
@@ -69,7 +161,7 @@ FROM
 | :---------------------------: | :---------------------: | :--: |
 | denatran_frota_municipio_tipo |        5,471.92         | 2004 |
 
-### Consulta da mediana de resgistros mensais do ano de **2004** na tabela **denatran_frota_municipio_tipo**:
+### Consulta da mediana de registros mensais do ano de **2004** na tabela **denatran_frota_municipio_tipo**:
 
 ```sql
 SELECT
@@ -97,7 +189,7 @@ FROM
 | :---------------------------: | :-----------------------: | :--: |
 | denatran_frota_municipio_tipo |          5,473.0          | 2004 |
 
-### Consulta do maior valor de resgistros de veículos no ano de **2004** na tabela **denatran_frota_municipio_tipo**:
+### Consulta do maior valor de registros de veículos no ano de **2004** na tabela **denatran_frota_municipio_tipo**:
 
 ```sql
 SELECT
@@ -134,7 +226,7 @@ HAVING
 | :---------------------------: | :-: | :-------------: | :--: |
 | denatran_frota_municipio_tipo | 12  |      5,474      | 2004 |
 
-### Consulta do menor valor de resgistros de veículos no ano de **2004** na tabela **denatran_frota_municipio_tipo**:
+### Consulta do menor valor de registros de veículos no ano de **2004** na tabela **denatran_frota_municipio_tipo**:
 
 ```sql
 SELECT
@@ -175,31 +267,6 @@ HAVING
 | denatran_frota_municipio_tipo |  4  |      5,470      | 2004 |
 
 ## Análise por tipo de veículo e região do Brasil
-
-### Consulta da soma dos automóveis por estado, agrupados na região Sudeste
-
-```sql
-SELECT
-	sigla_uf,
-	SUM(automovel) AS total_automoveis,
-	ano
-FROM
-	denatran_frota_municipio_tipo
-WHERE
-	ano = 2004
-	AND sigla_uf IN ('ES', 'MG', 'SP', 'RJ')
-GROUP BY
-	sigla_uf;
-```
-
-#### Resultado:
-
-| sigla_uf | total_automoveis | ano  |
-| :------: | :--------------: | :--: |
-|    ES    |    4,547,824     | 2004 |
-|    MG    |    29,706,162    | 2004 |
-|    RJ    |    27,395,493    | 2004 |
-|    SP    |   109,817,363    | 2004 |
 
 ### Consulta da soma de todos os automóveis registrados em **2004** agrupados na região Sudeste
 
@@ -256,7 +323,7 @@ ORDER BY
 | 2009 |   146,031,994    |   8,820,540   |
 | 2010 |   155,487,437    |   9,455,443   |
 | 2011 |   164,978,810    |   9,491,373   |
-| 2012 |   174,257,943    |   9279,133    |
+| 2012 |   174,257,943    |   9,279,133   |
 | 2013 |   183,492,704    |   9,234,761   |
 | 2014 |   192,119,317    |   8,626,613   |
 | 2015 |   199,334,640    |   7,215,323   |
